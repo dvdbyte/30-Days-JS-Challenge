@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #333;
+}
+.container{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer-circle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  margin: 2rem auto;
+  border-radius: 50%;
+}
+
+
+.inner-circle{
+   position: relative;
+    width: 185px;
+    height: 185px;
+    border: 4px solid #fff;
+    background-color: #333;
+    border-radius: 50%; 
+    padding: 0.7rem;
+}
+
+.hand{
+  position: absolute;
+  top: 50%;
+  width: 48%;
+  border: 2px solid #fff;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+}
+
+.hand.seconds{
+  border-color: orange;
+}
+
+.hand.hour{
+  border-color: yellow;
+}
+.center{
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  background-color: red;
+  z-index: 5;
+  width: 10px;
+  height: 10px;
+  padding: 0.5rem;
+  height: 10px;
+  border-radius: 50%;
+}
+ </style>
+  <title>JS Clock</title>
+</head>
+<body>
+  <div class="container">
+    <div class="outer-circle">
+      <div class="inner-circle">
+        <div class="hand hour"></div>
+        <div class="hand minute"></div>
+        <div class="hand seconds"></div>
+        <div class="center"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+     function setDate(){
+        const now = new Date()
+        const seconds = now .getSeconds()
+        const secondsToDegree = ((seconds / 60) * 360) + 90
+
+        //MOVE SECONDS HAND
+        const secondHand = document.querySelector('.seconds')
+        secondHand.style.transform = `rotate(${secondsToDegree}deg)`
+   
+        //MOVE MINUTES HAND
+        const minute = now.getMinutes()
+        const minuteHand = document.querySelector('.minute') 
+        const minuteToDegree = ((minute / 60) * 360) + ((seconds/60)*6) + 90;
+        minuteHand.style.transform = `rotate(${minuteToDegree}deg)`
+
+        // MOVE HOUR HAND
+        const hour = now.getHours()
+        const hourHand = document.querySelector('.hour')
+        const hourToDegree = ((hour * 12 ) / 360 ) + ((minute/60)*6) + 90;
+        hourHand.style.transform = `rotate(${hourToDegree}deg)`
+
+        console.log(hour)
+
+
+     }
+
+     setInterval(setDate, 1000)
+     setDate()
+  </script>
+</body>
+</html>

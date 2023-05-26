@@ -110,22 +110,28 @@ kbd{
  <script>
     // Function to play sound
     const handlePlay = (e) => {
-        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-        if (!audio) return;
-        audio.currentTime = 0;
-        audio.play()
-        // Add effect to the key
-        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
-        key.classList.add('playing')
+      // Get audio elements
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+      // check to remove unavalable keys
+      if (!audio) return
+      audio.currentTime= 0; //set current time to 0 and play sound
+      audio.play()
+
+      // Add key effect to sound
+
+      // 1. Get key elements
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+      key.classList.add('playing')
+
     }
 
-    // Function to clear the effect
-    const handleEffect = (e) => {
+     // Function to remove button effect
+     const handleEffect = (e) => {
       const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
-      key.classList.remove('playing')
-    }
-    
-    window.addEventListener('keydown', handlePlay )
+      key.classList.remove('playing');
+     }
+
+    window.addEventListener('keydown', handlePlay)
     window.addEventListener('keyup', handleEffect)
  </script>
 </body>
