@@ -62,7 +62,7 @@ input.search {
 
 .suggestions li:nth-child(odd) {
   transform: perspective(100px) rotateX(-3deg) translateY(3px);
-  background: linear-gradient(to top,  blue 0%,#EFEFEF 100%);
+  background: linear-gradient(to top,  ffffff 0%,#EFEFEF 100%);
 }
 
 span.population {
