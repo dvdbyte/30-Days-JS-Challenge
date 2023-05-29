@@ -107,8 +107,6 @@
       flex: 5;
     }
   </style>
-
-
   <div class="panels">
     <div class="panel panel1">
       <p>Hey</p>
@@ -136,22 +134,20 @@
       <p>Motion</p>
     </div>
   </div>
-
   <script>
-      const  panels = document.querySelectorAll('.panel');
-      
-      function toggleOpen() {
-        this.classList.toggle('open')
-      }
+    
+    const panels = document.querySelectorAll('.panel')
+    function toggleOpen() {
+      this.classList.toggle('open')
+    }
+    function toggleActive(e) {
+      if (e.propertyName.includes('flex')){
+      this.classList.toggle('active')}
+    }
 
-      function toggleActive(e) {
-        if(e.propertyName.includes('flex')){
-        this.classList.toggle('active')
-        }
-      }
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen))
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive))
 
-      panels.forEach(panel => panel.addEventListener('click', toggleOpen))
-      panels.forEach(panel => panel.addEventListener('transitionend', toggleActive))
   </script>
 
 </body>
