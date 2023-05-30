@@ -45,11 +45,12 @@
       
       /* Safari transitionend event.propertyName === flex */
       /* Chrome + FF transitionend event.propertyName === flex-grow */
-      transition:
+       transition:
         font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
         flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-        background 0.2s;
+        background 0.2s; 
       font-size: 20px;
+    
       background-size: cover;
       background-position: center;
     }
@@ -136,15 +137,16 @@
   </div>
   <script>
     
-    const panels = document.querySelectorAll('.panel')
-    function toggleOpen() {
+    function toggleOpen(){
       this.classList.toggle('open')
     }
-    function toggleActive(e) {
-      if (e.propertyName.includes('flex')){
-      this.classList.toggle('active')}
-    }
 
+    function toggleActive(e){
+      if (e.propertyName.includes('flex')) {
+      this.classList.toggle('active')
+      }
+    }
+    const panels = document.querySelectorAll('.panel')
     panels.forEach(panel => panel.addEventListener('click', toggleOpen))
     panels.forEach(panel => panel.addEventListener('transitionend', toggleActive))
 

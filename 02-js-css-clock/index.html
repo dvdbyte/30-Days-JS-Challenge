@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
   *{
   margin: 0;
   padding: 0;
@@ -12,11 +14,12 @@
 }
 body{
   background-color: #333;
+  font-family: 'Poppins', sans-serif;
 }
 .container{
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -28,7 +31,7 @@ body{
   width: 200px;
   height: 200px;
   background-color: #fff;
-  margin: 2rem auto;
+  margin: 2rem;
   border-radius: 50%;
 }
 
@@ -71,11 +74,29 @@ body{
   height: 10px;
   border-radius: 50%;
 }
+.digital{
+  background-color: #fff;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 5px;
+  display: flex;
+}
+.digital h4{
+  padding: 5px;
+}
+.digital span{
+  font-size: 20px;
+}
  </style>
   <title>JS Clock</title>
 </head>
 <body>
   <div class="container">
+    <div class="digital">
+     <h4>H: <span class="h">00</span></h4>
+     <h4>M: <span class="m">00</span></h4>
+     <h4>S: <span class="s">00</span></h4>
+    </div>
     <div class="outer-circle">
       <div class="inner-circle">
         <div class="hand hour"></div>
@@ -90,7 +111,6 @@ body{
         const now = new Date()
         const seconds = now .getSeconds()
         const secondsToDegree = ((seconds / 60) * 360) + 90
-
         //MOVE SECONDS HAND
         const secondHand = document.querySelector('.seconds')
         secondHand.style.transform = `rotate(${secondsToDegree}deg)`
@@ -108,12 +128,29 @@ body{
         hourHand.style.transform = `rotate(${hourToDegree}deg)`
 
         console.log(hour)
-
-
      }
 
      setInterval(setDate, 1000)
      setDate()
+
+     const h = document.querySelector('.h')
+     const m = document.querySelector('.m')
+     const s = document.querySelector('.s')
+     
+     function time(){
+      const now = new Date()
+      // Get Hour
+      const hour = now.getHours()
+      h.innerText = hour
+
+      const minutes = now.getMinutes()
+      m.innerText = minutes
+
+      const seconds = now.getSeconds()
+      s.innerText = seconds
+     }
+     setInterval(time, 1000)
+    //  time()
   </script>
 </body>
 </html>
