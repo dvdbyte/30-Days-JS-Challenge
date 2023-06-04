@@ -60,16 +60,22 @@
     
 
   <script>
-    const inputs = document.querySelector('.controls input');
+    const inputs = document.querySelectorAll('input');
     const img = document.querySelector('img');
     const blur = document.querySelector('blur')
     const base = document.querySelector('base')
   
+    function handleChange(){
+       img.style.padding = `${this.value}px`
+       blur.style.filter = `0px`
+ 
+    }
+
     inputs.forEach( (input) => {
-      console.log(input)
+      input.addEventListener('change', handleChange)
     })
 
-  
+    
   </script>
 
 </body>
