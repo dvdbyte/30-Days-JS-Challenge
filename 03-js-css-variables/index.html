@@ -66,9 +66,8 @@
     const base = document.querySelector('base')
   
     function handleChange(){
-       img.style.padding = `${this.value}px`
-       blur.style.filter = `0px`
- 
+      const surffix = this.dataset.sizing || ''
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + surffix)
     }
 
     inputs.forEach( (input) => {
